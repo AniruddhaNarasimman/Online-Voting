@@ -1,0 +1,15 @@
+{% extends 'homepage/base.html'%}
+{% block content %}
+<form action="" method="post">
+    {%csrf_token%}
+    <legend>vote!</legend>
+    {% for candidate in candidates %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{candidate.roll_no}}">
+    <label for="choice{{ forloop.counter }}">{{ candidate.first_name }} {{candidate.second_name}}</label><br>
+    
+    {% endfor %}
+    <input type="text" name="rollno" value="{{roll_no}}" style="display: none;">
+    <input type="submit" value="vote">
+</form>
+{%endblock content%}
+
